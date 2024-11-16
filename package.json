@@ -1,0 +1,42 @@
+{
+  "name": "fbb-core",
+  "bin": "./bin/www",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "set DEBUG=myapp:* & npm start",
+    "start": "node ./bin/www",
+    "fcdb": "python fill_candle_database.py --chunk-size 5000",
+    "fcdb:sort": "python fill_candle_database.py --sort 5000",
+    "prisma:seed": "npx tsx prisma/seed.js",
+    "prisma:seed:reset": "npx tsx prisma/seed_reset.js",
+    "prisma:reset": "npx prisma migrate reset",
+    "test:unit:coverage": "vitest run --coverage",
+    "test:unit:coverage:ui": "vitest --coverage --ui",
+    "test:unit:coverage:ci": "vitest run --coverage"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.20.0",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "^4.19.2",
+    "http-errors": "~1.6.3",
+    "jade": "^0.29.0",
+    "moment": "^2.30.1",
+    "moment-timezone": "^0.5.45",
+    "morgan": "~1.9.1",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.11.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.8.1",
+    "@vitest/coverage-istanbul": "^1.6.0",
+    "@vitest/ui": "^1.6.0",
+    "prisma": "^5.20.0",
+    "vitest": "^1.6.0"
+  },
+  "prisma": {
+    "seed": "ts-node prisma/seed.js"
+  }
+}
